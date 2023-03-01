@@ -1,0 +1,18 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+<h2><a  style="color:black" href="{% url 'download' %}">Download</a></h2>
+{%for sale in sales%}
+<div>
+    <div id="table-form">
+        <table>
+            <tr>
+                <th>ID</th><td>{{sale.id}}</td></tr>
+                <th>Store ID</th><td>{{sale.storeid}}</td></tr>
+                <th>Product ID</th><td>{{sale.prodid}}</td></tr>
+                <th>Pub date</th><td>{{sale.pub_date}}</td></tr>
+                <th>Units Sold</th><td>{{sale.units_sold}}</td></tr>
+        </table>
+    </div>
+</div>
+{%endfor%}
+{% endblock %}

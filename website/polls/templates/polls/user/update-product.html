@@ -1,0 +1,21 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+<article id="form">
+    <h1>Update Product</h1>
+    <form  method="post">
+        {% csrf_token %}
+        <div id="wrapper">
+            <label id="label" for="html">Product Name: </label><br>
+            <input id="form-input" name="product_name" value="{{ product.product_name }}">
+            
+            <label id="label" for="html">Product ID:</label><br>
+            <input id="form-input" name="productid" value="{{ product.product_id }}">
+
+            <label id="label" for="html">Unit Price:</label><br>
+            <input id="form-input" name="unit" value="{{ product.unit_price }}">
+
+        </div>
+        <input id="form-button" type="submit" value="Submit">
+    </form>
+</article>
+{%endblock%}

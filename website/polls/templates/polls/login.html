@@ -1,0 +1,21 @@
+{% load static %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/login.css' %}">
+
+<body style="background-color:434242;">
+  <div id="card">
+    <div id="card-body">
+      <form method="POST" action="">
+      {%csrf_token%}
+          <h5>LOGIN</h5>
+          <input type="text" name="username" placeholder="Username..">
+          <input type="password" name="password" placeholder="Password..">
+          {% if messages%}   
+              {%for messages in messages%}     
+                  <p style="color: red; font-weight: bold;">{{messages}}</p>
+              {% endfor %}
+          {% endif %}
+          <div><input  id="button"type="submit" value="LOGIN"></div> 
+      </form>
+    </div>
+  </div>
+</body>

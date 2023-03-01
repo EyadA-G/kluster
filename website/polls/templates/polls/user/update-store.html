@@ -1,0 +1,21 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+<article id="form">
+    <h1>Update Store</h1>
+    <form  method="post">
+        {% csrf_token %}
+        <div id="wrapper">
+            <label id="label" for="html">Store Name: </label><br>
+            <input id="form-input" name="store_name" value="{{ store.store_name }}">
+            
+            <label id="label" for="html">Store ID:</label><br>
+            <input id="form-input" name="storeid" value="{{ store.store_id }}">
+
+            <label id="label" for="html">Store Location:</label><br>
+            <input id="form-input" name="storelocation" value="{{ store.store_location }}">
+
+        </div>
+        <input id="form-button" type="submit" value="Submit">
+    </form>
+</article>
+{%endblock%}

@@ -1,0 +1,42 @@
+#card{
+    width: 18rem;  
+    position: fixed; 
+    right: 50%; 
+    left: 30%; 
+    top: 10%;
+    font-family: sans-serif;
+    text-align: center;
+  
+}
+#card-body{
+    background-color: #918e8e;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 80px;
+   
+    width: fit-content;
+    padding: 2px 100px 5px 50px;
+
+}
+h5{
+    margin: 100px 0px 50px 0px;
+}
+input{
+    font-size: 20px;
+    width: 500px;
+    padding: 2px 100px 5px 50px;
+    margin: 0px 0px 20px 0px;
+    border-radius: 10px;
+}
+#button{
+    border-radius: 15px;
+    margin: 15px;
+    padding: 10px 15px 10px 15px;
+    color: white;
+    background-color: rgb(34, 34, 34);
+
+}
+#button:hover{
+    color: rgb(34, 34, 34);
+    background-color: white;
+}

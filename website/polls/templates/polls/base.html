@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel='stylesheet' type='text/css' href="{% static 'css/form.css' %}">
+    <link rel='stylesheet' type='text/css' href="{% static 'css/detail.css' %}">
+    <link rel='stylesheet' type='text/css' href="{% static 'css/base.css' %}">
+    <link rel='stylesheet' type='text/css' href="{% static 'css/sales.css' %}">
+
+
+    <title>{% block title %}Test app{% endblock %}</title>
+
+  </head>
+    <body>
+      <main>
+        <header><h1 style="text-align:center"><a style="text-decoration:none"class="edit" href="{% url 'user' %}">{{usern}}</a></h1></header>
+        <nav>
+            <ul>
+              <li style="float:right" id="logout"><a class="logout" href="{% url 'logout' %}">logout</a></li> 
+              <li><a class="edit" href="{% url 'add_product' %}">Add Product</a></li>
+              <li><a class="edit" href="{% url 'add_store' %}">Add Store</a></li>
+              <li><a class="edit" href="{% url 'add_sales' %}">Add Sales</a></li>
+              <li><a class="edit" href="{% url 'view_sales' %}">View Sales</a></li>
+            </ul>
+        </nav>
+        {% block content %}
+        {% endblock %}
+      </main>
+  </body>
+</html>

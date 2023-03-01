@@ -1,0 +1,24 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+<article id="form">
+    <h1>Add Store</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div id="wrapper">
+            <label id="label" for="html">User: </label><br>
+            <div id="form-div">{{store_form.user}}</div>
+
+            <label id="label" for="html">Store ID:: </label><br>
+            <div id="form-div">{{store_form.storeid}}</div>
+
+            <label id="label" for="html">Store Name:: </label><br>
+            <div id="form-div">{{store_form.store_name}}</div>
+
+            <label id="label" for="html">Store Location: </label><br>
+            <div id="form-div">{{store_form.store_location}}</div>
+            
+            <input id="form-button" type="submit" value="Submit">
+        </div>
+    </form>
+</article>
+{%endblock%}

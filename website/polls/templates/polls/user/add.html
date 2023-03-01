@@ -1,0 +1,14 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+
+<p>name {{user_name}}</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{form_q.as_p}}
+    <input type="submit" value="OK">
+</form>
+
+<span><a class="back" href="{% url 'users' %}">back</a></span>
+<span><a class="logout" href="{% url 'logout' %}">logout</a></span>
+{% endblock %}

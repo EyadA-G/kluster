@@ -1,0 +1,33 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+
+<article id="page">
+    <div id="prod_wrapper">
+        <div id="prod">Products List</div>
+        {%for product in products%}
+            <div id="card">
+                <div id="product_p">{{product.product_name}} [{{product}}]</div> 
+            
+                <div id="price_p">Unit price: £{{product.unit_price}}</div>
+                {{product.productid}}
+                <div id="update"><a href="delete/{{ product.productid }}">delete</a></div>
+                <div id="update"><a href="update/{{ product }}">update</a></div>
+            </div>
+        {%endfor%}
+    <div>
+
+    <div id="store_wrapper">
+        <div id="prod">Stores List</div>
+        {%for store in stores%}
+            <div id="card">
+                <div id="product_s">{{store.store_name}} [{{store}}]</div> 
+            
+                <div id="price_s">Location: {{store.store_location}}</div>
+            
+                <div id="update"><a href="delete-s/{{ store.store_id }}">delete-store</a></div>
+                <div id="update"><a href="update-s/{{ store }}">update-store</a></div>
+            </div>
+        {%endfor%}
+    </div>
+</article>
+{%endblock%}
