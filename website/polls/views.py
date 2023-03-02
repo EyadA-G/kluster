@@ -204,21 +204,40 @@ def view_sales(request):
   
     return render(request, 'polls/forms/view_sales.html', context)
 
-@login_required(login_url='login')
-def export_csv(request):
+def export_sales_csv(request):
+    
+    usern = get_username(request)
+    sales_model = models.StoreSales.objects.filter(user=usern[1])
+    filename = f'{usern[0]}-sales'
+    return  export_csv(sales_model, ['storeid', 'prodid', 'pub_date', 'units_sold'], filename)
+
+def export_store_csv(request):
     
     usern = get_username(request)
 
     # users = models.Users.objects.get(user=usern[0])
-    sales_data = models.StoreSales.objects.filter(user=usern[1])
+    store_model = models.StoreData.objects.filter(user=usern[1])
+    filename = f'{usern[0]}-store'
+    return  export_csv(store_model, ['storeid', 'store_name', 'store_location'], filename)
+
+def export_product_csv(request):
+    
+    usern = get_username(request)
+    store_model = models.ProductData.objects.filter(user=usern[1])
+    filename = f'{usern[0]}-product'
+    return  export_csv(store_model, ['productid', 'product_name', 'unit_price'], filename)
+
+
+def export_csv(model, list, filename):
 
     response = HttpResponse()
     
-    response['Content-Disposition'] = f'attachment; filename={usern[0]}-sales.csv'
+    response['Content-Disposition'] = f'attachment; filename={filename}.csv'
 
     writer = csv.writer(response)
-    writer.writerow(['storeid', 'prodid', 'pub_date', 'units_sold'])
-    to_csv = sales_data.values_list('storeid', 'prodid', 'pub_date', 'units_sold')
+    writer.writerow(list)
+
+    to_csv = model.values_list(*list)
     for data in to_csv:
         writer.writerow(data)
     return response
