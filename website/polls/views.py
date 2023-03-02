@@ -18,18 +18,6 @@ def get_username(request):
     users.append(usern)
 
     return users
-# def get_data(**kwargs):
-#     data = []
-#     if 'prod_id' in kwargs:
-#         product = models.ProductData.objects.get(product_id=kwargs['prod_id'])
-#         print(kwargs['prod_id'])
-#         data.append(product)
-
-#     if 'id' in kwargs:
-#         # store = models.StoreData.objects.get(user=kwargs['usern'])
-#         store= models.StoreSales.objects.filter(id=kwargs['id']).values()
-#         data.append(store)
-#     return data
 
 def delete_store(request, storeid):
     store_name = models.StoreData.objects.get(storeid=storeid)
@@ -61,9 +49,7 @@ def update_store(request, storeid):
         return render(request, 'polls/user/update-store.html', context)
 
 
-
-
-def delete_product(request, productid):
+def delete_product(productid):
     member = models.ProductData.objects.get(productid=productid)
     print(member)
     member.delete()
@@ -214,8 +200,7 @@ def export_sales_csv(request):
 def export_store_csv(request):
     
     usern = get_username(request)
-
-    # users = models.Users.objects.get(user=usern[0])
+    
     store_model = models.StoreData.objects.filter(user=usern[1])
     filename = f'{usern[0]}-store'
     return  export_csv(store_model, ['storeid', 'store_name', 'store_location'], filename)
